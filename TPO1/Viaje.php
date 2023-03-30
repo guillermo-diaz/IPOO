@@ -14,6 +14,8 @@ class Viaje{
     }
    
   }
+  
+  //setCodigo() no lo hice xq es la clave del objeto y no deberia modificarse
 
   /**
    * Get the value of codigo
@@ -88,10 +90,11 @@ class Viaje{
     return $this->setPasajeros($pasajeros);
   }
 
+  //agrega un pasajero al viaje actual
   public function agregar_pasajero($pas){
     $flag = false;
     $pos = count($this->pasajeros);
-    if ($pos + 1 < $this->max_pasajeros){
+    if ($pos + 1 < $this->max_pasajeros){ //si no esta lleno
       $this->pasajeros[$pos] = $pas;
       $flag = true;
     }
@@ -103,7 +106,8 @@ class Viaje{
     $i = 0;
     $max = count($this->pasajeros);
 
-    while (!$flag && $i < $max){
+    //busco el pasajero y le cambio el nombre (si existe)
+    while (!$flag && $i < $max){ 
       
       if ($this->pasajeros[$i]['DNI'] == $dni_pasajero){
         $this->pasajeros[$i]['nombre'] = $nombre;
@@ -120,6 +124,7 @@ class Viaje{
     $i = 0;
     $max = count($this->pasajeros);
 
+    //busco el pasajero y le cambio el apellido(si existe)
     while (!$flag && $i < $max){
       
       if ($this->pasajeros[$i]['DNI'] == $dni_pasajero){

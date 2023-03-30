@@ -3,7 +3,7 @@ include 'Viaje.php';
 
 
 function precarga_pasajeros(){
-    $pasajeros[0] = ["DNI" => 00000000, "nombre" => 'Guillermo', "apellido" => 'Diaz'];
+    $pasajeros[0] = ["DNI" => 00000001, "nombre" => 'Guillermo', "apellido" => 'Diaz'];
     $pasajeros[1] = ["DNI" => 11111111, "nombre" => 'Jamiro', "apellido" => 'Zuñiga'];
     $pasajeros[2] = ["DNI" => 22222222, "nombre" => 'Franco', "apellido" => 'Benitez'];
     $pasajeros[3] = ["DNI" => 33333333, "nombre" => 'Agustin', "apellido" => 'Heredia'];
@@ -16,6 +16,7 @@ function precarga_pasajeros(){
     return $pasajeros;
 }
 
+//verifica si la clave de pasajero se repite en el array
 function esta_repetido(&$pasajeros, $clave){
     $flag = false;
     $i = 0;
@@ -32,6 +33,17 @@ function esta_repetido(&$pasajeros, $clave){
     return $flag;
 }
 
+/**
+ * Carga pasajeros en un array con una cantidad fija y lo retorna
+ * 
+ * @param max cantidad maxima pasajeros
+ */
+/*
+ 
+
+
+
+*/
 function cargar_pasajeros($max){
     $pasajeros = [];
     $cant = 0;
@@ -58,10 +70,18 @@ function cargar_pasajeros($max){
     return $pasajeros;
 } 
 
+//verifica si es dni
 function es_dni($dni){
     return $dni >= 0 && is_numeric($dni);
 }
 
+/**
+ * Crea un pasajero y lo agrega a la coleccion que viene por parametro, la coleccion
+ * es necesaria para fijarse de no repetir el mismo dni dentro del mismo array
+ * 
+ * @param array de pasajeros
+ * @return pasajero
+ */
 function crear_pasajero(&$array_pasajeros){
     do{
         echo "Ingrese el nombre: \n";
@@ -223,6 +243,7 @@ function menu_opciones(){
         echo "\n";        
     } while ($opcion != 6);
 }
+
 
 function solicitar_cant_max_pasajeros(){
     do {
