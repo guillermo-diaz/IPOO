@@ -84,6 +84,15 @@ class Pasajero
         return $this->dni == $otro_pasajero->getDni();
     }
 
+    public function __toString(){
+        return <<<END
+          Nombre: $this->nombre
+          Apellido: $this->apellido
+          DNI: $this->dni
+          Telefono: $this->telefono
+        END;
+    }
+
 
 
 }
