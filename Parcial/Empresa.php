@@ -116,7 +116,7 @@
             $cad = "";
 
             foreach ($this->getCol_clientes() as $cliente) {
-                $cad = $cad . $cliente->__toString(). " \n";
+                $cad = $cad . "\t".$cliente->__toString(). " \n";
 
             }
             return $cad;
@@ -126,7 +126,7 @@
             $cad = "";
 
             foreach ($this->getCol_motos() as $moto) {
-                $cad = $cad . $moto->__toString(). " \n";
+                $cad = $cad . "\t".$moto->__toString() . " \n";
 
             }
             return $cad;
@@ -243,6 +243,27 @@
             return $col_ventas;
         }
 
+        public function informarSumaVentasNacionales(){
+            $importe_total_nacionales = 0;
+
+            foreach ($this->getCol_ventas_realizadas() as $venta) {
+                //le sumo el total de la venta nacional (si no tiene ninguna moto, suma 0)
+                $importe_total_nacionales = $importe_total_nacionales + $venta->retornarTotalVentaNacional();
+            }
+            return $importe_total_nacionales;
+        }
+
+        public function informarVentasImportadas(){
+            $col_ventas_importadas = [];
+
+            foreach ($this->getCol_ventas_realizadas() as $venta) {
+                //si tiene al menos 1 moto, lo agrego
+                if (!empty($venta->retornarMotosImportadas())){ 
+                    $col_ventas_importadas[] = $venta;
+                }
+            }
+            return $col_ventas_importadas;
+        }
         
     }
 

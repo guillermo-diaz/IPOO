@@ -140,7 +140,7 @@ class Moto{
 
     /**
      * Verifica si tiene el mismo codigo
-     * @param codigo cualquier
+     * @param codigo cualquiera
      * @return boolean son iguales
      */
     public function equals_codigo($un_codigo){

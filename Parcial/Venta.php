@@ -122,7 +122,7 @@
             $cad = "";
 
             foreach ($this->getCol_motos() as $moto) {
-                $cad = $cad . $moto->__toString() . " \n";
+                $cad = $cad . "\t".$moto->__toString() . " \n";
 
             }
             return $cad;
@@ -156,9 +156,26 @@
             return $flag;
         }
 
+        public function retornarTotalVentaNacional() {
+                $total_nacional = 0; //lo inicio en 0 por si no hay ninguna moto nacional
+                foreach($this->getCol_motos() as $moto){
+                        if ($moto instanceof MotoNacional){
+                                $total_nacional = $total_nacional + $moto->darPrecioVenta();
+                        }
+                }
+                return $total_nacional;
+        }
+
+        public function retornarMotosImportadas(){
+                $col_motos_importadas = [];
+
+                foreach($this->getCol_motos() as $moto){
+                        if ($moto instanceof MotoExterior){
+                                $col_motos_importadas[] = $moto;
+                        }
+                }
+                return $col_motos_importadas;
+        }
+
        
     }
-
-
-
-?>
